@@ -1,4 +1,6 @@
 defmodule Day2 do
+  alias Advent.Utils
+
   def letter_counts(str) do
     str
     |> split_chars()
@@ -73,10 +75,10 @@ defmodule Day2 do
     |> Enum.join("")
   end
 
-  def part1, do: process(&checksum/1, "day2_input.txt")
+  def part1, do: Utils.process(&checksum/1, "day2_input.txt")
 
   def part2 do
-    process(
+    Utils.process(
       fn lines ->
         lines
         |> find_pair
@@ -84,17 +86,5 @@ defmodule Day2 do
       end,
       "day2_input.txt"
     )
-  end
-
-  defp process(fun, filename) do
-    input_path = Path.join(:code.priv_dir(:advent), filename)
-
-    with {:ok, inputs} <- File.read(input_path) do
-      inputs
-      |> String.trim()
-      |> String.split("\n")
-      |> Enum.reject(&(&1 == ""))
-      |> fun.()
-    end
   end
 end
