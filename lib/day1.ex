@@ -9,8 +9,7 @@ defmodule Day1 do
 
   def parse(lines) do
     lines
-    |> String.trim()
-    |> String.split("\n")
+    |> String.split("\n", trim: true)
     |> Enum.reject(&(&1 == ""))
     |> Enum.map(fn line ->
       line |> String.trim() |> parse_line()

@@ -1,8 +1,7 @@
 defmodule Advent.Utils do
   def parse_lines(inputs) do
     inputs
-    |> String.trim()
-    |> String.split("\n")
+    |> String.split("\n", trim: true)
   end
 
   def process(fun, filename) do
